@@ -17,7 +17,7 @@
             <div class="p-6 text-xl font-bold border-b">Dashboard</div>
             <nav class="p-4 space-y-2">
                 <a href="#" class="block text-gray-700 hover:bg-gray-100 p-2 rounded">Home</a>
-                <a href="#" class="block text-gray-700 hover:bg-gray-100 p-2 rounded">Analytics</a>
+                <a href="#" class="block text-gray-700 hover:bg-gray-100 p-2 rounded">Manage Post</a>
                 <a href="#" class="block text-gray-700 hover:bg-gray-100 p-2 rounded">Settings</a>
             </nav>
         </div>
@@ -29,8 +29,8 @@
             <header class="bg-white shadow p-4 flex justify-between items-center">
                 <h1 class="text-xl font-semibold">Dashboard</h1>
                 <div class="space-x-4">
-                    <button class="bg-blue-500 text-white px-4 py-2 rounded">New</button>
-                    <img src="https://i.pravatar.cc/40" class="w-10 h-10 rounded-full" alt="User" />
+                    <button class="bg-blue-500 text-white px-4 py-2 rounded ">Add Post </button>
+                    <!-- <img src="https://i.pravatar.cc/40" class="w-10 h-10 rounded-full" alt="User" /> -->
                 </div>
             </header>
 
@@ -60,33 +60,32 @@
                 <!-- Chart or Table Section -->
                 <div class="bg-white p-6 rounded shadow">
                     <h2 class="text-xl font-semibold mb-4">Recent Activity</h2>
-                    <div class="overflow-x-auto">
-                        <table class="min-w-full text-left text-sm">
-                            <thead>
-                                <tr class="border-b">
-                                    <th class="p-2">Date</th>
-                                    <th class="p-2">User</th>
-                                    <th class="p-2">Activity</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr class="border-b">
-                                    <td class="p-2">2025-05-21</td>
-                                    <td class="p-2">John Doe</td>
-                                    <td class="p-2">Logged in</td>
-                                </tr>
-                                <tr class="border-b">
-                                    <td class="p-2">2025-05-20</td>
-                                    <td class="p-2">Jane Smith</td>
-                                    <td class="p-2">Made a purchase</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+                    <table class="table-auto w-full border-collapse border border-gray-300">
+                        <thead>
+                            <tr class="bg-gray-200 border-b border-gray-300 text-center">
+                                <th class="p-3 text-center">Date</th>
+                                <th class="p-3 text-center">Time</th>
+                                <th class="p-3 text-center">Name</th>
+                                <th class="p-3 text-center">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($users as $user)
+                            <tr class="border-b border-gray-300 text-center">
+                                <td class="p-3">{{ $user->created_at->format('Y-m-d') }}</td>
+                                <td class="p-3">{{ $user->created_at->format('H:i:s') }}</td>
+                                <td class="p-3">{{ $user->name }}</td>
+                                <td class="p-3 text-green-600 font-semibold">Registered</td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
 
-            </main>
+                </div>
         </div>
+
+        </main>
+    </div>
 
     </div>
 

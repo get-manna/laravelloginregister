@@ -5,17 +5,13 @@ use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 
-
-
-
-
 Route::get('/', function () {
 
     return view('register');
 });
 
 Route::get('/login', function () {
-  
+
     return view('Login');
 });
 
@@ -26,6 +22,7 @@ Route::post('Login-user', [CustomAuthcontroller::class, 'Loginuser'])->name('Log
 
 
 Route::get('/Dashboard', function () {
-    $totalUsers = User::all()->count();
-    return view('Dashboard', ['totalUsers' => $totalUsers]);
+    $users = User::all();
+    $totalUsers = $users->count();
+    return view('Dashboard', compact('users', 'totalUsers'));
 })->name('Dashboard');
