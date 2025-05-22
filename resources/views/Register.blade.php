@@ -51,7 +51,7 @@
 
         <p class="text-sm text-center text-gray-600 mt-4">
             Already have an account?
-            <a href="/" class="text-blue-600 hover:underline">Login</a>
+            <a href="/login" class="text-blue-600 hover:underline">Login</a>
         </p>
     </div>
 

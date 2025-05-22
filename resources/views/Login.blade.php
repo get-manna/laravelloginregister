@@ -49,7 +49,7 @@
 
         <p class="text-sm text-center text-gray-600 mt-4">
             New User
-            <a href="Register" class="text-blue-600 hover:underline">Register Here</a>
+            <a href="/" class="text-blue-600 hover:underline">Register Here</a>
         </p>
     </div>
 

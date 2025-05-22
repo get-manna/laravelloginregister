@@ -13,10 +13,10 @@ use Illuminate\Support\Facades\Session;
 class CustomAuthcontroller extends Controller
 {
 
-    public function Register()
+    public function register()
     {
 
-        return 'Register';
+        return 'register';
     }
 
 

@@ -40,8 +40,7 @@
                     <!-- Card 1 -->
                     <div class="bg-white p-4 rounded shadow">
                         <h2 class="text-lg font-semibold">Users</h2>
-                        <p class="text-2xl font-bold mt-2">553
-                            5
+                        <p class="text-2xl font-bold mt-2">{{ $totalUsers }}
                         </p>
                     </div>
 
