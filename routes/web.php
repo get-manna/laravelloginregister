@@ -4,6 +4,9 @@ use App\Http\Controllers\CustomAuthcontroller;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\Postcontroller;
+
+
 
 Route::get('/', function () {
 
@@ -26,3 +29,20 @@ Route::get('/Dashboard', function () {
     $totalUsers = $users->count();
     return view('Dashboard', compact('users', 'totalUsers'));
 })->name('Dashboard');
+
+
+Route::get('/create', [postcontroller::class, 'create']);
+Route::post('/store', [postcontroller::class, 'ourstore'])->name('store');
+
+Route::get('/Edit/{id}', [postcontroller::class, 'Editdata'])->name('Edit');
+
+Route::post('/update/{id}', [postcontroller::class, 'updatedata'])->name('update');
+
+Route::get('/Delete/{id}', [postcontroller::class, 'Deletedata'])->name('Delete');
+
+
+
+
+Route::get('/createpost',function () {
+    return view('createpost');
+});

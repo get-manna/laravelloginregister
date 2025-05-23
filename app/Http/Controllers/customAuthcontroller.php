@@ -13,10 +13,10 @@ use Illuminate\Support\Facades\Session;
 class CustomAuthcontroller extends Controller
 {
 
-    public function register()
+    public function Register()
     {
 
-        return 'register';
+        return 'Register';
     }
 
 
@@ -34,7 +34,7 @@ class CustomAuthcontroller extends Controller
         $user->password = Hash::make($request->password);
         $user->save();
 
-        return redirect('/')->with('success', 'You have registered successfully. Please login.');
+        return redirect('/login')->with('success', 'You have registered successfully. Please login.');
     }
 
 

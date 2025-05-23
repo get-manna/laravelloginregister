@@ -17,7 +17,7 @@
             <div class="p-6 text-xl font-bold border-b">Dashboard</div>
             <nav class="p-4 space-y-2">
                 <a href="#" class="block text-gray-700 hover:bg-gray-100 p-2 rounded">Home</a>
-                <a href="#" class="block text-gray-700 hover:bg-gray-100 p-2 rounded">Manage Post</a>
+                <a href="createpost" class="block text-gray-700 hover:bg-gray-100 p-2 rounded">Create Post</a>
                 <a href="#" class="block text-gray-700 hover:bg-gray-100 p-2 rounded">Settings</a>
             </nav>
         </div>
