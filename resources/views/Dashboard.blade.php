@@ -18,6 +18,7 @@
             <nav class="p-4 space-y-2">
                 <a href="#" class="block text-gray-700 hover:bg-gray-100 p-2 rounded">Home</a>
                 <a href="createpost" class="block text-gray-700 hover:bg-gray-100 p-2 rounded">Create Post</a>
+                <a href="allpost" class="block text-gray-700 hover:bg-gray-100 p-2 rounded">All Post</a>
                 <a href="#" class="block text-gray-700 hover:bg-gray-100 p-2 rounded">Settings</a>
             </nav>
         </div>
@@ -29,7 +30,9 @@
             <header class="bg-white shadow p-4 flex justify-between items-center">
                 <h1 class="text-xl font-semibold">Dashboard</h1>
                 <div class="space-x-4">
-                    <button class="bg-blue-500 text-white px-4 py-2 rounded ">Add Post </button>
+                    <a href="{{ url('createpost') }}" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+                        Add Post
+                    </a>
                     <!-- <img src="https://i.pravatar.cc/40" class="w-10 h-10 rounded-full" alt="User" /> -->
                 </div>
             </header>

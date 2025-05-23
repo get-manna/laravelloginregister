@@ -5,6 +5,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Postcontroller;
+use App\Models\Post;
 
 
 
@@ -46,3 +47,14 @@ Route::get('/Delete/{id}', [postcontroller::class, 'Deletedata'])->name('Delete'
 Route::get('/createpost',function () {
     return view('createpost');
 });
+
+
+
+
+Route::get('/allpost', function () {
+    $posts = Post::all();
+    return view('allpost', compact('posts')); 
+});
+
+
+Route::resource('posts', Postcontroller::class);
