@@ -47,7 +47,7 @@
                         <td class="px-4 py-3 border border-green-300">{{ $post->created_at->format('Y-m-d') }}</td>
                         <td class="p-3">{{ $post->created_at->format('H:i:s') }}</td>
                         <td class="px-4 py-3 border border-green-300 space-x-2">
-                            <a href="{{ route('posts.edit', $post->id) }}" class="bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600">Edit</a>
+                            <a href="{{ route('editdata', $post->id) }}" class="bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600">Edit</a>
                             <form action="{{ route('posts.destroy', $post->id) }}" method="POST" class="inline">
                                 @csrf
                                 @method('DELETE')

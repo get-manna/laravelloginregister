@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Models\User;
 use App\Models\user as ModelsUser;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rules\Email;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
@@ -22,12 +23,13 @@ class CustomAuthcontroller extends Controller
 
     public function registeruser(Request $request)
     {
-        $request->validate([
+       $validated = $request->validate([
             'name' => 'required',
             'email' => 'required|email|unique:users',
             'password' => 'required|max:12|min:6',
         ]);
 
+    
         $user = new User();
         $user->name = $request->name;
         $user->email = $request->email;
@@ -45,16 +47,34 @@ class CustomAuthcontroller extends Controller
             'password' => 'required',
         ]);
 
-        $user = User::where('email', $request->email)->first();
-
-        if ($user && Hash::check($request->password, $user->password)) {
-
-            $request->session()->put('loginId', $user->id);
 
 
-            return redirect()->route('Dashboard')->with('success', 'Login successful!');
-        } else {
-            return back()->withErrors(['email' => 'Invalid email or password']);
+         $credentials = $request->only('email', 'password');
+
+         if (Auth::attempt($credentials)) {
+
+            return redirect()->intended('Dashboard')
+
+                        ->withSuccess('You have Successfully loggedin');
+
         }
+
+         return redirect("login")->withSuccess('Oppes! You have entered invalid credentials');
+
+
+
+    }
+
+
+    public function logout() {
+
+        Session::flush();
+
+        Auth::logout();
+
+  
+
+        return Redirect('login');
+
     }
 }

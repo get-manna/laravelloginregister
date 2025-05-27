@@ -6,8 +6,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Postcontroller;
 use App\Models\Post;
-
-
+use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
 
@@ -16,8 +15,19 @@ Route::get('/', function () {
 
 Route::get('/login', function () {
 
-    return view('Login');
-});
+
+    // return view('Login');
+
+    if (!Auth::check()) {
+        return view('Login');
+    }
+
+    return redirect("Dashboard")->withSuccess('Opps! You do not have access');
+
+})->name('login');
+
+
+
 
 Route::post('register-user', [CustomAuthcontroller::class, 'registeruser'])->name('register-user');
 
@@ -26,35 +36,58 @@ Route::post('Login-user', [CustomAuthcontroller::class, 'Loginuser'])->name('Log
 
 
 Route::get('/Dashboard', function () {
-    $users = User::all();
-    $totalUsers = $users->count();
-    return view('Dashboard', compact('users', 'totalUsers'));
+
+
+    if (Auth::check()) {
+        $users = User::all();
+        $totalUsers = $users->count();
+
+        return view('Dashboard', compact('users', 'totalUsers'));
+    }
+
+    return redirect("login")->withSuccess('Opps! You do not have access');
 })->name('Dashboard');
 
 
-Route::get('/create', [postcontroller::class, 'create']);
 Route::post('/store', [postcontroller::class, 'ourstore'])->name('store');
 
-Route::get('/Edit/{id}', [postcontroller::class, 'Editdata'])->name('Edit');
+Route::post('/update/{id}', [Postcontroller::class, 'updatedata'])->name('update');
 
-Route::post('/update/{id}', [postcontroller::class, 'updatedata'])->name('update');
-
-Route::get('/Delete/{id}', [postcontroller::class, 'Deletedata'])->name('Delete');
+Route::delete('/posts/{id}', [PostController::class, 'Deletedata'])->name('posts.destroy');
 
 
 
 
-Route::get('/createpost',function () {
-    return view('createpost');
+Route::get('/createpost', function () {
+
+    if (Auth::check()) {
+        return view('createpost');
+    }
+    return redirect("login")->withSuccess('Opps! You do not have access');
 });
+
+
+Route::get('/editdata/{id}', function ($id) {
+    if (Auth::check()) {
+        $post = Post::findOrFail($id);
+        return view('editdata', compact('post'));
+    }
+    return redirect("login")->withSuccess('Opps! You do not have access');
+})->name('editdata');
 
 
 
 
 Route::get('/allpost', function () {
-    $posts = Post::all();
-    return view('allpost', compact('posts')); 
+    if (Auth::check()) {
+        $posts = Post::all();
+        return view('allpost', compact('posts'));
+    }
+
+    return redirect("login")->withSuccess('Opps! You do not have access');
 });
 
 
-Route::resource('posts', Postcontroller::class);
+
+
+Route::get('logout', [CustomAuthcontroller::class, 'logout'])->name('logout');
