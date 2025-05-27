@@ -9,7 +9,7 @@
 </head>
 
 <body class="bg-gray-100 py-10">
-    <div class="max-w-7xl mx-auto p-6 bg-white rounded shadow">
+    <div class="max-w-7xl mx-auto p-2 bg-white rounded shadow">
 
 
 
@@ -33,6 +33,7 @@
                         <th class="px-4 py-3 border border-green-500">Category</th>
                         <th class="px-4 py-3 border border-green-500">Date</th>
                         <th class="px-4 py-3 border border-green-500">Time</th>
+                        <th class="px-4 py-3 border border-green-500">Image</th>
                         <th class="px-4 py-3 border border-green-500">Actions</th>
                     </tr>
                 </thead>
@@ -46,6 +47,9 @@
                         <td class="px-4 py-3 border border-green-300">{{ $post->category }}</td>
                         <td class="px-4 py-3 border border-green-300">{{ $post->created_at->format('Y-m-d') }}</td>
                         <td class="p-3">{{ $post->created_at->format('H:i:s') }}</td>
+                        <td class="px-4 py-3 border border-green-300">
+                            <img src="{{ asset('images/' . $post->image) }}" alt="Post Image" class="w-16 h-16 object-cover rounded-md">
+                        </td>
                         <td class="px-4 py-3 border border-green-300 space-x-2">
                             <a href="{{ route('editdata', $post->id) }}" class="bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600">Edit</a>
                             <form action="{{ route('posts.destroy', $post->id) }}" method="POST" class="inline">

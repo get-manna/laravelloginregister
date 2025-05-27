@@ -30,7 +30,7 @@
             <header class="bg-white shadow p-4 flex justify-between items-center">
                 <h1 class="text-xl font-semibold">Dashboard</h1>
                 <div class="space-x-4">
-                    <a href="{{ url('logout') }}" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+                    <a href="{{ url('logout') }}" class="bg-blue-500 text-white px-4 py-2 rounded bg-green-600">
                         logout
                     </a>
                     <!-- <img src="https://i.pravatar.cc/40" class="w-10 h-10 rounded-full" alt="User" /> -->
