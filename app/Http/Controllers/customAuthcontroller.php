@@ -46,9 +46,6 @@ class CustomAuthcontroller extends Controller
             'email' => 'required|email',
             'password' => 'required',
         ]);
-
-
-
          $credentials = $request->only('email', 'password');
 
          if (Auth::attempt($credentials)) {
@@ -60,9 +57,6 @@ class CustomAuthcontroller extends Controller
         }
 
          return redirect("login")->withSuccess('Oppes! You have entered invalid credentials');
-
-
-
     }
 
 

@@ -1,10 +1,12 @@
 <?php
 
 use App\Http\Controllers\CustomAuthcontroller;
+use App\Http\Middleware\IsLoggedIn;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Postcontroller;
+use App\Http\Middleware\Guest;
 use App\Models\Post;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,16 +17,8 @@ Route::get('/', function () {
 
 Route::get('/login', function () {
 
-
-    // return view('Login');
-
-    if (!Auth::check()) {
-        return view('Login');
-    }
-
-    return redirect("Dashboard")->withSuccess('Opps! You do not have access');
-
-})->name('login');
+    return view('Login');
+})->name('login')->middleware(Guest::class);
 
 
 
@@ -37,16 +31,11 @@ Route::post('Login-user', [CustomAuthcontroller::class, 'Loginuser'])->name('Log
 
 Route::get('/Dashboard', function () {
 
+    $users = User::all();
+    $totalUsers = $users->count();
 
-    if (Auth::check()) {
-        $users = User::all();
-        $totalUsers = $users->count();
-
-        return view('Dashboard', compact('users', 'totalUsers'));
-    }
-
-    return redirect("login")->withSuccess('Opps! You do not have access');
-})->name('Dashboard');
+    return view('Dashboard', compact('users', 'totalUsers'));
+})->name('Dashboard')->middleware(IsLoggedIn::class);
 
 
 Route::post('/store', [postcontroller::class, 'ourstore'])->name('store');
@@ -60,32 +49,24 @@ Route::delete('/posts/{id}', [PostController::class, 'Deletedata'])->name('posts
 
 Route::get('/createpost', function () {
 
-    if (Auth::check()) {
-        return view('createpost');
-    }
-    return redirect("login")->withSuccess('Opps! You do not have access');
-});
+    return view('createpost');
+})->middleware(IsLoggedIn::class);
 
 
 Route::get('/editdata/{id}', function ($id) {
-    if (Auth::check()) {
-        $post = Post::findOrFail($id);
-        return view('editdata', compact('post'));
-    }
-    return redirect("login")->withSuccess('Opps! You do not have access');
-})->name('editdata');
+
+    $post = Post::findOrFail($id);
+    return view('editdata', compact('post'));
+})->name('editdata')->middleware(IsLoggedIn::class);
 
 
 
 
 Route::get('/allpost', function () {
-    if (Auth::check()) {
-        $posts = Post::all();
-        return view('allpost', compact('posts'));
-    }
 
-    return redirect("login")->withSuccess('Opps! You do not have access');
-});
+    $posts = Post::all();
+    return view('allpost', compact('posts'));
+})->middleware(IsLoggedIn::class);
 
 
 

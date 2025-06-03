@@ -30,7 +30,6 @@
                         <th class="px-4 py-3 border border-green-500">ID</th>
                         <th class="px-4 py-3 border border-green-500">Title</th>
                         <th class="px-4 py-3 border border-green-500">Description</th>
-                        <th class="px-4 py-3 border border-green-500">Category</th>
                         <th class="px-4 py-3 border border-green-500">Date</th>
                         <th class="px-4 py-3 border border-green-500">Time</th>
                         <th class="px-4 py-3 border border-green-500">Image</th>
@@ -44,7 +43,6 @@
                         <td class="px-4 py-3 border border-green-300">{{ $post->id }}</td>
                         <td class="px-4 py-3 border border-green-300">{{ $post->name }}</td>
                         <td class="px-4 py-3 border border-green-300">{{ $post->description }}</td>
-                        <td class="px-4 py-3 border border-green-300">{{ $post->category }}</td>
                         <td class="px-4 py-3 border border-green-300">{{ $post->created_at->format('Y-m-d') }}</td>
                         <td class="p-3">{{ $post->created_at->format('H:i:s') }}</td>
                         <td class="px-4 py-3 border border-green-300">

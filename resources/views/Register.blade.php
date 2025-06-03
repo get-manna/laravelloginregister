@@ -9,18 +9,13 @@
 </head>
 
 <body class="bg-gray-100 flex items-center justify-center min-h-screen">
-
     <div class="bg-white p-6 rounded-lg shadow-md w-full max-w-sm">
         <h2 class="text-2xl font-semibold text-center text-gray-800 mb-4">Register</h2>
-
-
         @if (session('success'))
         <div class="bg-green-100 text-green-700 p-2 rounded mb-2 text-sm text-center">
             {{ session('success') }}
         </div>
         @endif
-
-
         @if ($errors->any())
         <div class="bg-red-100 text-red-700 p-2 rounded mb-2 text-sm">
             <ul class="list-disc pl-4">
@@ -30,7 +25,6 @@
             </ul>
         </div>
         @endif
-
         <form class="space-y-4" method="POST" action="{{ route('register-user') }}">
             @csrf
 
@@ -48,7 +42,6 @@
                 Sign Up
             </button>
         </form>
-
         <p class="text-sm text-center text-gray-600 mt-4">
             Already have an account?
             <a href="/login" class="text-green-600 hover:underline">Login</a>
