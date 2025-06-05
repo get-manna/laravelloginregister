@@ -22,7 +22,6 @@ Route::get('/login', function () {
 
 
 
-
 Route::post('register-user', [CustomAuthcontroller::class, 'registeruser'])->name('register-user');
 
 Route::post('Login-user', [CustomAuthcontroller::class, 'Loginuser'])->name('Login-user');
@@ -46,7 +45,6 @@ Route::delete('/posts/{id}', [PostController::class, 'Deletedata'])->name('posts
 
 
 
-
 Route::get('/createpost', function () {
 
     return view('createpost');
@@ -61,13 +59,11 @@ Route::get('/editdata/{id}', function ($id) {
 
 
 
-
 Route::get('/allpost', function () {
 
     $posts = Post::all();
     return view('allpost', compact('posts'));
 })->middleware(IsLoggedIn::class);
-
 
 
 

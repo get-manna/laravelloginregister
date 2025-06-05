@@ -16,7 +16,7 @@
         <div class="w-full md:w-64 bg-white h-screen shadow-md">
             <div class="p-6 text-xl font-bold border-b">Dashboard</div>
             <nav class="p-4 space-y-2">
-                <a href="#" class="block text-gray-700 hover:bg-gray-100 p-2 rounded">Home</a>
+                <a href="#" class="block text-gray-700 hover:bg-gray-100 p-2 rounded">Home</ul></a>
                 <a href="createpost" class="block text-gray-700 hover:bg-gray-100 p-2 rounded">Create Post</a>
                 <a href="allpost" class="block text-gray-700 hover:bg-gray-100 p-2 rounded">All Post</a>
                 <a href="#" class="block text-gray-700 hover:bg-gray-100 p-2 rounded">Settings</a>
